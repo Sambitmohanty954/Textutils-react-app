@@ -1,4 +1,8 @@
 # Textutils-reacct-app
+### Sample image
+
+<img width="1440" alt="Screenshot 2022-12-16 at 6 54 59 PM" src="https://user-images.githubusercontent.com/47233211/208108685-5e304ee5-82ef-4ec2-9dc2-6521d5d977dc.png">
+
 =======
 # Getting Started with Create React App
 
