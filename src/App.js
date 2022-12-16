@@ -51,7 +51,7 @@ function App() {
             exact path="/"
             element = <TextForm
               showAlert={showAlert}
-              heading="Enter the text to analyze below"
+              heading="Try Textutils - Word counter, Character counter, Listen the words"
               mode={mode}
             />
           />
@@ -63,3 +63,8 @@ function App() {
 }
 
 export default App;
+
+
+// we can deploy this aap using gh-pages via github "https://create-react-app.dev/docs/deployment#github-pages"
+// If you want to deploy in domain then install, install digital ocean, then add nginx // https://www.codewithharry.com/blogpost/lemp-stack-on-ubuntu-20/ 
+// we can add ssl certification by cert-bot in ngninx

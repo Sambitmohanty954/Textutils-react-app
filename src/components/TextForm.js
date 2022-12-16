@@ -34,6 +34,7 @@ export default function TextForm(props) {
         let texts = document.getElementById("exampleFormControlTextarea1")
         texts.select();
         navigator.clipboard.writeText(texts.value)
+        document.getSelection().removeAllRanges();
         props.showAlert("Copied to clipboard", "success")
     }
 
@@ -58,27 +59,27 @@ export default function TextForm(props) {
     // text = "dhdhjd" //wrong way to update
     // setText("jdhjhdjhd") // correct way to update
 
-    const textLength = text.split(' ').filter(function (n) { return n !== '' }).length
+    const textLength = text.split(' ').filter((n) => { return n !== '' }).length
   return (
     <>
     <div className='container' style={{color: props.mode === "dark" ? "white" : "black"}}>
-        <h1>{props.heading}</h1>
+        <h1 className='mb-3'>{props.heading}</h1>
         <div className="mb-3">
-            <textarea className="form-control"value={text} onChange={handleChangeEvent} id="exampleFormControlTextarea1" style={{backgroundColor: props.mode === "dark" ? "grey":"white", color: props.mode === "dark" ? "white":"black"}} rows="8"></textarea>
+            <textarea className="form-control"value={text} onChange={handleChangeEvent} id="exampleFormControlTextarea1" style={{backgroundColor: props.mode === "dark" ? "#13466e":"white", color: props.mode === "dark" ? "white":"black"}} rows="8"></textarea>
         </div>
-        <button className="btn btn-primary mx-1" onClick={handleClickEvent}>Convert to Uppercase</button>
-        <button className="btn btn-primary mx-1" onClick={handleTitleCase}>Convert to Title Case</button>
-        <button className="btn btn-primary mx-1" onClick={handleLowercaseEvent}>Convert to Lowercase</button>
-        <button className="btn btn-primary mx-1" onClick={handleCopy}>Copy Text</button>
-        <button className="btn btn-primary mx-1" onClick={handleClearEvent}>Clear</button>
-        <button className="btn btn-warning mx-1" onClick={speak} id='toggle'>Speak</button>
+        <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleClickEvent}>Convert to Uppercase</button>
+        <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleTitleCase}>Convert to Title Case</button>
+        <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleLowercaseEvent}>Convert to Lowercase</button>
+        <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleCopy}>Copy Text</button>
+        <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleClearEvent}>Clear</button>
+        <button disabled={text.length === 0} className="btn btn-warning mx-1 my-1" onClick={speak} id='toggle'>Speak</button>
     </div>
     <div className='container' style={{color: props.mode === "dark" ? "white" : "black"}}>
         <h2 className='my-3'>Your text summary</h2>
         <p>Your text have {textLength} words and {text.length} characters</p>
         <p>{Math.round(0.008 * textLength)} Minutes read</p>
         <h3>Preview</h3>
-        <p>{text.length > 0 ? text : "Enter something to preview"}</p>
+        <p>{text.length > 0 ? text : "Nothing to preview"}</p>
     </div>
     </>
   )
