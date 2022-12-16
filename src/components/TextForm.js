@@ -5,11 +5,13 @@ export default function TextForm(props) {
     const handleClickEvent = () =>{
         const upercase = text.toUpperCase();
         setText(upercase)
+        props.showAlert("Converted to uppercase", "success")
     }
 
     const handleLowercaseEvent = () =>{
         const upercase = text.toLowerCase();
         setText(upercase)
+        props.showAlert("Converted to lowercase", "success")
     }
     const handleChangeEvent = (event) =>{
         console.log("On change")
@@ -18,18 +20,21 @@ export default function TextForm(props) {
 
     const handleClearEvent = () =>{
         setText("")
+        props.showAlert("All words removed from textbox", "warning")
     }
 
     const handleTitleCase = () => {
         // let newText = text.split(".").map(el => el.charAt(0).toUpperCase() + el.slice(1)).join(" "); // titlecase all word
         let newText = text.split(" ").map(el => el.charAt(0).toUpperCase() + el.slice(1)).join(" ");
         setText(newText)
+        props.showAlert("All word got titalized", "success")
     }
 
     const handleCopy = () => {
         let texts = document.getElementById("exampleFormControlTextarea1")
         texts.select();
         navigator.clipboard.writeText(texts.value)
+        props.showAlert("Copied to clipboard", "success")
     }
 
     const speak = () => {
@@ -53,7 +58,7 @@ export default function TextForm(props) {
     // text = "dhdhjd" //wrong way to update
     // setText("jdhjhdjhd") // correct way to update
 
-    const textLength = text.split(" ").length
+    const textLength = text.split(' ').filter(function (n) { return n !== '' }).length
   return (
     <>
     <div className='container' style={{color: props.mode === "dark" ? "white" : "black"}}>
